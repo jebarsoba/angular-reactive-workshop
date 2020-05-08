@@ -32,3 +32,21 @@ const updateProject = (projects, project) => projects.map(p => {
   return p.id === project.id ? Object.assign({}, project) : p;
 });
 const deleteProject = (projects, project) => projects.filter(w => project.id !== w.id);
+
+export interface ProjectState {
+  projects: Project[];
+  selectedProjectId: string | null;
+}
+
+export const initialState: ProjectState = {
+  projects: initialProjects,
+  selectedProjectId: null
+}
+
+export function projectsReducer(
+  state = initialState, action): ProjectState {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}

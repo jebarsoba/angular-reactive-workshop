@@ -1,6 +1,7 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Customer, Project, ProjectsService, NotificationsService, CustomersService } from '@workshop/core-data';
+// import { Customer, CustomersService, NotificationsService, Project, ProjectsService } from '@workshop/core-data';
+import { Customer, CustomersService, NotificationsService, Project, ProjectsService } from '@workshop/core-data';
+import { Observable } from 'rxjs';
 
 const emptyProject: Project = {
   id: null,
@@ -24,7 +25,13 @@ export class ProjectsComponent implements OnInit {
   constructor(
     private projectsService: ProjectsService,
     private customerService: CustomersService,
-    private ns: NotificationsService) { }
+    // TODO: For being able to use the store here, I'd first need to fix the error when trying to import the StateModule into CoreDataModule...
+    // private store: Store<ProjectState>,
+    private ns: NotificationsService) {
+    // this.projects$ = this.store.pipe(
+    //   select('projects')
+    // );
+  }
 
   ngOnInit() {
     this.getProjects();
