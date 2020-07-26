@@ -1,7 +1,7 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
-
 import * as fromCustomers from './customers/customers.reducer';
 import * as fromProjects from './projects/projects.reducer';
+
 
 // Updated the shape of the entire application state
 export interface AppState {
@@ -24,4 +24,23 @@ export const selectAllCustomers = createSelector(
   fromCustomers.selectAllCustomers
 );
 
+// -------------------------------------------------------------------
+// PROJECTS SELECTORS
+// -------------------------------------------------------------------
+export const selectProjectState
+  = createFeatureSelector<fromProjects.ProjectsState>('projects');
 
+export const selectProjectIds = createSelector(
+  selectProjectState,
+  fromProjects.selectProjectIds
+)
+
+export const selectProjectEntities = createSelector(
+  selectProjectState,
+  fromProjects.selectProjectEntities
+)
+
+export const selectAllProjects = createSelector(
+  selectProjectState,
+  fromProjects.selectAllProjects
+)
